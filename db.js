@@ -1,25 +1,22 @@
+const mongoose = require ('mongoose');
 
+function connectDB () {
+  mongoose.connect (
+    'mongodb+srv://weissenborn24seb:BMHxCDtYBSAYChJK@sw-mangodb.hltjnmb.mongodb.net/datepicker',
+    {useUnifiedTopology: true, useNewUrlParser: true}
+  );
 
+  const connection = mongoose.connection;
 
-const mongoose = require("mongoose");
+  connection.on ('connected', () => {
+    console.log ('Mongo DB Connection Successfull');
+  });
 
-function connectDB(){
-
-    mongoose.connect('mongodb+srv://weissenborn24seb:BMHxCDtYBSAYChJK@sw-mangodb.hltjnmb.mongodb.net/datepicker' , {useUnifiedTopology: true , useNewUrlParser: true})
-
-    const connection = mongoose.connection
-
-    connection.on('connected' , ()=>{
-        console.log('Mongo DB Connection Successfull')
-    })
-
-    connection.on('error' , ()=>{
-        console.log('Mongo DB Connection Error')
-    })
-
-
+  connection.on ('error', () => {
+    console.log ('Mongo DB Connection Error');
+  });
 }
 
-connectDB()
+connectDB ();
 
-module.exports = mongoose
+module.exports = mongoose;
