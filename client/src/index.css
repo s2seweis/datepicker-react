@@ -4,7 +4,7 @@ body {
   font-family: 'Montserrat', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: azure !important;
+  /* background-color: azure !important; */
 }
 body , html{
   overflow-x: hidden !important;
@@ -14,7 +14,7 @@ code {
     monospace;
 }
 .bs1{
-  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px !important;
 }
 .ant-row{
   margin: 0 20 !important;
@@ -28,7 +28,8 @@ code {
 h1{
   font-size: 30px;
   font-weight: bold;
-  color : orangered;
+  color : black;
+  margin-bottom: 0px !important;
 }
 p{
   margin: 5px !important;
@@ -38,8 +39,8 @@ p{
 .btn1{
   box-shadow: none !important;
   background-color : white !important;
-  color: orangered !important;
-  border: 1px solid orangered !important;
+  color: black !important;
+  border: 1px solid black !important;
   padding: 5px 15px !important;
   outline: none !important;
   margin-bottom: 100px;
@@ -52,13 +53,14 @@ button{
 }
 .header{
   padding: 10px;
+  background-color: lightblue;
   
 }
 .header .ant-btn{
   box-shadow: none !important;
   background-color : white !important;
-  color: orangered !important;
-  border: 1px solid orangered !important;
+  color: black !important;
+  border: 1px solid black !important;
   padding: 5px 15px !important;
   outline: none !important;
 }
@@ -100,13 +102,15 @@ button{
   /* transition: 0.3s; */
 }
 .login{
-  background-color: black;
-  padding-top: 50px;
+  /* background-color: black; */
+  /* padding-top: 50px; */
+  background: url(https://img.freepik.com/premium-vector/seamless-pattern-abstract-background-with-futuristic-style-use-business-cover-banner_7505-1820.jpg);
   min-height: 100vh;
+  margin-top: 15px;
 }
 .login label , .login h1{
   color: white !important;
-  opacity: 0.6;
+  /* opacity: 0.6; */
 }
 .login-form{
   background-color: #1F1F1F;
@@ -145,5 +149,5 @@ svg{
   width : 20px !important;
 }
 a{
-  color: orangered !important;
+  color: black !important;
 }

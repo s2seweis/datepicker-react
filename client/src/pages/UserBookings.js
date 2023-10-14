@@ -9,9 +9,10 @@ import moment from 'moment';
 function UserBookings () {
   const dispatch = useDispatch ();
   const {bookings} = useSelector (state => state.bookingsReducer);
+  console.log("line:300", bookings);
   const {loading} = useSelector (state => state.alertsReducer);
   const user = JSON.parse (localStorage.getItem ('user'));
-  console.log("line:5000", user.role);
+  console.log("line:5000", user?.role);
 
   const {users} = useSelector(state=>state.usersReducer)
   console.log("line:107.1", users);
@@ -31,7 +32,9 @@ function UserBookings () {
         >
 
           {/* filter and display the bookings of a User */}
-          {bookings.filter (o => o.user == user._id).map (booking => {
+          {/* {bookings.filter (o => o.user == user._id).map (booking => { */}
+          {/* filter and display the bookings of all Users */}
+          {bookings.map (booking => {
             return (
               <Row gutter={16} className="bs1 mt-3 text-left">
                 <Col 

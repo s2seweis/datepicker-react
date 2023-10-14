@@ -73,7 +73,7 @@ function Home() {
 
              <Row className='mt-3' justify='center'>
                  
-                 <Col lg={20} sm={24} className='d-flex justify-content-left'>
+                 <Col lg={20} sm={24} className=' justify-content-left'>
 
                  <RangePicker showTime={{format: 'HH:mm'}} format='MMM DD yyyy HH:mm' onChange={setFilter}/>
                  

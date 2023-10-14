@@ -53,9 +53,9 @@ function App () {
           </UsersRoute>
         
 
-        <PublicRoute users={users} path="/admin" exact component={ErrorPage} >
+        {/* <PublicRoute users={users} path="/admin" exact component={ErrorPage} >
         <Redirect to="/" />
-        </PublicRoute>
+        </PublicRoute> */}
 
 
        

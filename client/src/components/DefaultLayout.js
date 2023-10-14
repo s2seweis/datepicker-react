@@ -61,13 +61,13 @@ function DefaultLayout(props, users) {
         </a>
       </Menu.Item>
       
-      <Menu.Item onClick={()=>{
+      {/* <Menu.Item onClick={()=>{
           localStorage.clear();
           // localStorage.removeItem('user');
           window.location.href='/landing'
       }}>
           <li style={{color:'orangered'}}>Logout</li>
-      </Menu.Item>
+      </Menu.Item> */}
     </Menu>
   );
 
@@ -98,13 +98,21 @@ function DefaultLayout(props, users) {
           Admin
         </a>
       </Menu.Item>
-      <Menu.Item onClick={()=>{
+      <Menu.Item>
+        <a
+         
+          href="/landing"
+        >
+          Intro
+        </a>
+      </Menu.Item>
+      {/* <Menu.Item onClick={()=>{
           localStorage.clear();
           // localStorage.removeItem('user');
           window.location.href='/login'
       }}>
           <li style={{color:'orangered'}}>Logout</li>
-      </Menu.Item>
+      </Menu.Item> */}
     </Menu>
   );
 
@@ -123,7 +131,7 @@ function DefaultLayout(props, users) {
           <Row gutter={16} justify='center'>
               <Col lg={20} sm={24} xs={24}>
               <div className="d-flex justify-content-between">
-             <h1 ><b><Link to='/' style={{color:'orangered'}}>SheyCars</Link></b></h1>
+             <h1 style={{ marginLeft:"15px"}} ><div style={{color:"white"}} ><Link to='/' >DatePicker</Link></div></h1>
 
           {/* <Dropdown overlay={menu} placement="bottomCenter"> */}
 
@@ -145,11 +153,10 @@ function DefaultLayout(props, users) {
           </Dropdown>
           )}
           {/* ### */}
-          {/* ### */}        
-            
+          {/* ### - Currently using this */}       
           {props?.users?.role !==  'admin' && props?.users?.role !== 'user'   && (
-            <Dropdown  overlay={menuGuest} placement="bottomCenter">
-          <Button >{"Guest"}</Button>
+            <Dropdown  overlay={menuAdmin} placement="bottomCenter">
+          <Button >{"Admin"}</Button>
           </Dropdown>
           )}
           {/* ### */}
