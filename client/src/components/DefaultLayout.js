@@ -1,28 +1,17 @@
-import React from "react";
-import { Menu, Dropdown, Button, Row , Col } from "antd";
-import {Link} from 'react-router-dom'
-
-
-
+import React from 'react';
+import { Menu, Dropdown, Button, Row , Col } from 'antd';
+import {Link} from 'react-router-dom';
 
 function DefaultLayout(props, users) {
-
 
   // console.log("line:108",props );
   // console.log("line:108",props?.users );
   // console.log("line:109",props?.users?.role );
-    const user = JSON.parse(localStorage.getItem('user'))
-
-
-
-
-
-
-
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const menuGuest = (
     <Menu>
-        <Menu.Item>
+      <Menu.Item>
         <a
          
           href="/landing"
@@ -38,13 +27,12 @@ function DefaultLayout(props, users) {
           Register
         </a>
       </Menu.Item>
-      
    
     </Menu>
   );
   const menu = (
     <Menu>
-        <Menu.Item>
+      <Menu.Item>
         <a
          
           href="/"
@@ -74,7 +62,7 @@ function DefaultLayout(props, users) {
   // ###
   const menuAdmin = (
     <Menu>
-        <Menu.Item>
+      <Menu.Item>
         <a
          
           href="/"
@@ -116,71 +104,50 @@ function DefaultLayout(props, users) {
     </Menu>
   );
 
-  const test = props?.users?.role === "admin" ? menuAdmin :  menu
-
-
-
-  
-
-
-
+  const test = props?.users?.role === 'admin' ? menuAdmin :  menu;
 
   return (
     <div>
       <div className="header bs1">
-          <Row gutter={16} justify='center'>
-              <Col lg={20} sm={24} xs={24}>
-              <div className="d-flex justify-content-between">
-             <h1 style={{ marginLeft:"15px"}} ><div style={{color:"white"}} ><Link to='/' >DatePicker</Link></div></h1>
+        <Row gutter={16} justify='center'>
+          <Col lg={20} sm={24} xs={24}>
+            <div className="d-flex justify-content-between">
+              <h1 style={{ marginLeft:'15px'}} ><div style={{color:'white'}} ><Link to='/' >DatePicker</Link></div></h1>
 
-          {/* <Dropdown overlay={menu} placement="bottomCenter"> */}
+              {/* <Dropdown overlay={menu} placement="bottomCenter"> */}
 
-          {/* ### */}
-
-        
+              {/* ### */}
           
-          {/* ### */}          
-          {props?.users?.role === 'admin' && (
-            <Dropdown  overlay={test} placement="bottomCenter">
-          <Button >{user?.username || "Guest"}</Button>
-          </Dropdown>
-          )}
-          {/* ### */}
-          {/* ### */}          
-          {props?.users?.role === 'user' && (
-            <Dropdown  overlay={test} placement="bottomCenter">
-          <Button >{user?.username || "Guest"}</Button>
-          </Dropdown>
-          )}
-          {/* ### */}
-          {/* ### - Currently using this */}       
-          {props?.users?.role !==  'admin' && props?.users?.role !== 'user'   && (
-            <Dropdown  overlay={menuAdmin} placement="bottomCenter">
-          <Button >{"Admin"}</Button>
-          </Dropdown>
-          )}
-          {/* ### */}
+              {/* ### */}          
+              {props?.users?.role === 'admin' && (
+                <Dropdown  overlay={test} placement="bottomCenter">
+                  <Button >{user?.username || 'Guest'}</Button>
+                </Dropdown>
+              )}
+              {/* ### */}
+              {/* ### */}          
+              {props?.users?.role === 'user' && (
+                <Dropdown  overlay={test} placement="bottomCenter">
+                  <Button >{user?.username || 'Guest'}</Button>
+                </Dropdown>
+              )}
+              {/* ### */}
+              {/* ### - Currently using this */}       
+              {props?.users?.role !==  'admin' && props?.users?.role !== 'user'   && (
+                <Dropdown  overlay={menuAdmin} placement="bottomCenter">
+                  <Button >{'Admin'}</Button>
+                </Dropdown>
+              )}
+              {/* ### */}
           
-          
-  
+              {/* ### */}
 
-          
-
-          
-        
-
-          
-          {/* ### */}
-
-
-
-        </div>
-              </Col>
-          </Row>
+            </div>
+          </Col>
+        </Row>
         
       </div>
       <div className="content">{props.children}</div>
-
       
     </div>
   );

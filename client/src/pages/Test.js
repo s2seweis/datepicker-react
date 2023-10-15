@@ -1,11 +1,10 @@
 
-
-import React from 'react'
+import React from 'react';
 
 const Test = () => {
   return (
     <div>Test Route</div>
-  )
-}
+  );
+};
 
-export default Test
+export default Test;

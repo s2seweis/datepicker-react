@@ -39,7 +39,7 @@ function Login () {
             padding: '30px',
             height: 'fit-content',
             background: 'lightblue',
-            color:"black"
+            color:'black',
           }}
           layout="vertical"
           className="login-form "

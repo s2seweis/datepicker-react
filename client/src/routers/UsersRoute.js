@@ -1,25 +1,20 @@
 import React from 'react';
-import { Redirect, Route, BrowserRouter, Router, Switch } from 'react-router-dom';
+import { Route} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+export const UsersRoute = (props) => {
+  // console.log("line:110", props);
+  // console.log("line:111", props.users?.role);
 
-export const UsersRoute = (props, users) => {
-    // console.log("line:110", props);
-    // console.log("line:111", props.users?.role);
-
-    
-    if (
-      localStorage.getItem('user')
-     && 
-     props.users?.role === 'user'  
-     )
-     {
-      return <Route {...props} />;
-    }
-    
-    
-    
-    // else {
-    //   // return <Route {...props} />;
-    //   return <Redirect to="/login" />;
-    // }
+  if (localStorage.getItem ('user') && props.users?.role === 'user') {
+    return <Route {...props} />;
   }
+
+  UsersRoute.propTypes = {
+    users: PropTypes.shape({
+      role: PropTypes.string,
+      // Add more specific PropTypes for the users prop if needed
+    }),
+  };
+  
+};

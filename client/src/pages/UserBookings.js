@@ -9,13 +9,13 @@ import moment from 'moment';
 function UserBookings () {
   const dispatch = useDispatch ();
   const {bookings} = useSelector (state => state.bookingsReducer);
-  console.log("line:300", bookings);
+  console.log('line:300', bookings);
   const {loading} = useSelector (state => state.alertsReducer);
   const user = JSON.parse (localStorage.getItem ('user'));
-  console.log("line:5000", user?.role);
+  console.log('line:5000', user?.role);
 
-  const {users} = useSelector(state=>state.usersReducer)
-  console.log("line:107.1", users);
+  const {users} = useSelector(state=>state.usersReducer);
+  console.log('line:107.1', users);
 
   useEffect (() => {
     dispatch (getAllBookings ());
@@ -28,7 +28,7 @@ function UserBookings () {
 
       <Row justify="center" gutter={16}>
         <Col 
-        xl={12} lg={14} md={18} sm={20} xs={18}
+          xl={12} lg={14} md={18} sm={20} xs={18}
         >
 
           {/* filter and display the bookings of a User */}
@@ -47,9 +47,9 @@ function UserBookings () {
                 </Col>
 
                 <Col 
-                lg={8} sm={8} xs={14}
+                  lg={8} sm={8} xs={14}
                 >
-                  <p>Transaction Id : <b style={{wordBreak:"break-word"}}>{booking.transactionId}</b></p>
+                  <p>Transaction Id : <b style={{wordBreak:'break-word'}}>{booking.transactionId}</b></p>
                   <p>From: <b>{booking.bookedTimeSlots.from}</b></p>
                   <p>To: <b>{booking.bookedTimeSlots.to}</b></p>
                   <p>
@@ -61,8 +61,8 @@ function UserBookings () {
 
                 <Col 
                 // lg={6} sm={6} xs={18}
-                className="text-right"
-                style={{display:"flex", alignItems:"center", margin:"auto", justifyContent:"center"}}
+                  className="text-right"
+                  style={{display:'flex', alignItems:'center', margin:'auto', justifyContent:'center'}}
                 >
                   <img
                     style={{borderRadius: 5}}

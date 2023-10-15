@@ -24,7 +24,7 @@ function Home () {
     () => {
       setTotalcars (cars);
     },
-    [cars]
+    [cars],
   );
 
   function setFilter (values) {

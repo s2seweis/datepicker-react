@@ -33,7 +33,6 @@ function App () {
         {/* <PublicRoute users={users} path="/" exact component={Home} /> */}
         {/* ### */}
 
-
         <Route users={users} path="/landing" exact component={Login} />
         <Route users={users} path="/register" exact component={Register} />
         {/* ### */}
@@ -45,19 +44,16 @@ function App () {
         <AdminRoute users={users} path="/editcar/:carid" exact component={EditCar} />
 
         <AdminRoute users={users} path="/auth/admin" exact component={AdminHome} >
-        {/* <Redirect to="/" /> */}
+          {/* <Redirect to="/" /> */}
         </AdminRoute>
         
         <UsersRoute users={users} path="/user/admin" exact component={ErrorPage} >
           <Redirect to="/" />
-          </UsersRoute>
-        
+        </UsersRoute>
 
         {/* <PublicRoute users={users} path="/admin" exact component={ErrorPage} >
         <Redirect to="/" />
         </PublicRoute> */}
-
-
        
         {/* <AdminRoute path="/admin" exact component={AdminHome} /> */}
 
@@ -83,7 +79,6 @@ export default App;
 //     return <Route {...props} />;
 //   }
   
-  
 //   else {
 //     // return <Route {...props} />;
 //     return <Redirect to="/login" />;
@@ -107,7 +102,3 @@ export default App;
 //     return <Redirect to="/login" />;
 //   }
 // }
-
-
-
-

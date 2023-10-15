@@ -1,20 +1,20 @@
 const initialData = {
-    users : [],
+  users : [],
 
 };
 
 export const usersReducer = (state=initialData , action)=>{
 
-     switch(action.type)
-     {
-         case 'GET_USERS' : {
-             return{
-                 ...state,
-                 users : action.payload
-             }
-         }
+  switch(action.type)
+  {
+  case 'GET_USERS' : {
+    return{
+      ...state,
+      users : action.payload,
+    };
+  }
          
-         default:return state
-     }
+  default:return state;
+  }
 
-}
+};

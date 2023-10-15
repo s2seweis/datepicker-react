@@ -14,8 +14,8 @@ import StripeCheckout from 'react-stripe-checkout';
 const {RangePicker} = DatePicker;
 
 function BookingCar({match}) {
-  const {users} = useSelector(state=>state.usersReducer)
-  console.log("line:107.1", users);
+  const {users} = useSelector(state=>state.usersReducer);
+  console.log('line:107.1', users);
 
   const {cars} = useSelector (state => state.carsReducer);
   const {loading} = useSelector (state => state.alertsReducer);
@@ -43,7 +43,7 @@ function BookingCar({match}) {
         setcar (cars.find (o => o._id === match.params.carid));
       }
     },
-    [cars]
+    [cars],
   );
 
   useEffect (
@@ -53,7 +53,7 @@ function BookingCar({match}) {
         setTotalAmount (totalAmount + 30 * totalHours);
       }
     },
-    [driver, totalHours]
+    [driver, totalHours],
   );
 
   function selectTimeSlots (values) {
@@ -63,12 +63,7 @@ function BookingCar({match}) {
     setTotalHours (values[1].diff (values[0], 'hours'));
   }
 
- 
-
-
   function onToken(token) {
-
-
 
     const reqObj = {
       token,
@@ -82,7 +77,6 @@ function BookingCar({match}) {
         to,
       },
     };
-
 
     dispatch(bookCar(reqObj));
 
@@ -98,11 +92,11 @@ function BookingCar({match}) {
         className="d-flex align-items-center"
         style={{minHeight: '90vh'}}
       >
-        <Col style={{marginTop:"20px"}} lg={10} sm={24} xs={24}>
+        <Col style={{marginTop:'20px'}} lg={10} sm={24} xs={24}>
           <img src={car.image} className="carimg2 bs1" />
         </Col>
 
-        <Col style={{display:"contents"}} lg={10} sm={24} xs={24} className="text-right">
+        <Col style={{display:'contents'}} lg={10} sm={24} xs={24} className="text-right">
           <Divider type="horizontal" dashed>Car Info</Divider>
 
           <div style={{textAlign: 'right'}}>
@@ -115,7 +109,7 @@ function BookingCar({match}) {
           <Divider type="horizontal" dashed>Select Time Slots</Divider>
 
           <RangePicker
-            style={{marginBottom:"100px"}}
+            style={{marginBottom:'100px'}}
             showTime={{format: 'HH:mm'}}
             format="MMM DD yyyy HH:mm"
             onChange={selectTimeSlots}
@@ -150,7 +144,7 @@ function BookingCar({match}) {
               <h3>Total Amount : {totalAmount} </h3>
 
               <StripeCheckout
-              shippingAddress
+                shippingAddress
                 token={onToken}
                 currency='inr'
                 amount={totalAmount * 100}
@@ -182,9 +176,9 @@ function BookingCar({match}) {
               );
             })}
 
-            <div className="text-right mt-5" style={{marginBottom:"100px"}}>
+            <div className="text-right mt-5" style={{marginBottom:'100px'}}>
               <button
-              style={{marginBottom:"100px"}}
+                style={{marginBottom:'100px'}}
                 className="btn1"
                 onClick={() => {
                   setShowModal (false);
