@@ -1,6 +1,8 @@
-### Start Express Server: nodemon server
+# Scripts for this project
+- npm run dev | let the server & cliebt run 
+- npm run client or npm run server 
 
-## Next:
+# Coming for this project:
 1. Reduce it to only the datepicker, for make it more simple and just focus to improve the logic behind it
 2. Hours and minutes makes it more complicate then it should be 
 3. Make a table from the weeks when the car is still available, this table should be like a slider
@@ -13,7 +15,7 @@
 # Git Commands:
 - overwrite local files: git reset --hard HEAD / git pull 
 
-# Using Eslint and Prettier for node.js & react 
+# Eslint and Prettier for node.js & react 
 - npm install eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y eslint-plugin-import --save-dev
 - npx eslint --init
 - define .eslintrc according to your needs

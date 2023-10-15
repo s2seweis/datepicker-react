@@ -1,127 +1,114 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import DefaultLayout from '../components/DefaultLayout';
-import {getAllCars} from '../redux/actions/carsActions';
-import {Col, Row, DatePicker} from 'antd';
-import {Link} from 'react-router-dom';
+import { getAllCars } from '../redux/actions/carsActions';
+import { Col, Row, DatePicker } from 'antd';
+import { Link } from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import moment from 'moment';
-const {RangePicker} = DatePicker;
-function Home () {
-  const {cars} = useSelector (state => state.carsReducer);
-  const {users} = useSelector (state => state.usersReducer);
-  const {loading} = useSelector (state => state.alertsReducer);
-  const [totalCars, setTotalcars] = useState ([]);
-  const dispatch = useDispatch ();
 
-  useEffect (() => {
-    dispatch (getAllCars ());
+const { RangePicker } = DatePicker;
+
+function Home() {
+  const { cars } = useSelector(state => state.carsReducer);
+  const { users } = useSelector(state => state.usersReducer);
+  const { loading } = useSelector(state => state.alertsReducer);
+  const [totalCars, setTotalCars] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCars());
   }, []);
 
-  useEffect (
-    () => {
-      setTotalcars (cars);
-    },[cars]);
+  useEffect(() => {
+    // setTotalCars(cars);
+  }, [cars]);
 
-  function setFilter (values) {
-    var selectedFrom = moment (values[0], 'MMM DD yyyy HH:mm');
-    var selectedTo = moment (values[1], 'MMM DD yyyy HH:mm');
+  // function setFilter(values) {
+  //   const selectedFrom = moment(values[0]);
+  //   const selectedTo = moment(values[1]);
 
-    var temp = [];
+  //   const filteredCars = cars.filter(car => {
+  //     const isAvailable = car.bookedTimeSlots.every(booking => {
+  //       const bookingFrom = moment(booking.from);
+  //       const bookingTo = moment(booking.to);
 
-    // for (var car of cars) {
-    //   if (car.bookedTimeSlots.length == 0) {
-    //     temp.push (car);
-    //   } else {
-    //     for (var booking of car.bookedTimeSlots) {
-    //       if (
-    //         selectedFrom.isBetween (booking.from, booking.to) ||
-    //         selectedTo.isBetween (booking.from, booking.to) ||
-    //         moment (booking.from).isBetween (selectedFrom, selectedTo) ||
-    //         moment (booking.to).isBetween (selectedFrom, selectedTo)
-    //       ) {
-    //       } else {
-    //         temp.push (car);
-    //       }
-    //     }
-    //   }
-    // }
+  //       return (
+  //         selectedFrom.isSameOrAfter(bookingTo) ||
+  //         selectedTo.isSameOrBefore(bookingFrom)
+  //       );
+  //     });
 
-    for (var car of cars) {
-      let isAvailable = car.bookedTimeSlots.length === 0;
+  //     console.log('line:2', isAvailable);
+  //     setIsLoading(false);
+  //     return isAvailable;
+  //   });
 
-      for (var booking of car.bookedTimeSlots) {
-        const bookingFrom = moment (booking.from);
-        const bookingTo = moment (booking.to);
+  //   setTotalCars(filteredCars);
+  // }
 
-        if (
-          selectedFrom.isBetween (bookingFrom, bookingTo) ||
-          selectedTo.isBetween (bookingFrom, bookingTo) ||
-          bookingFrom.isBetween (selectedFrom, selectedTo) ||
-          bookingTo.isBetween (selectedFrom, selectedTo)
-        ) {
-          isAvailable = false;
-          break; // No need to check further, the car is not available
-        }
-      }
-      if (isAvailable) {
-        temp.push (car);
-      }
-    }
-    setTotalcars (temp);
+  function setFilter(values) {
+    const selectedFrom = moment(values[0]);
+    const selectedTo = moment(values[1]);
+  
+    const filteredCars = cars.filter(car => {
+      const bookedTimeSlots = car.bookedTimeSlots || []; // Add a null or undefined check here
+      const isAvailable = bookedTimeSlots.every(booking => {
+        const bookingFrom = moment(booking.from);
+        const bookingTo = moment(booking.to);
+  
+        return (
+          selectedFrom.isSameOrAfter(bookingTo) ||
+          selectedTo.isSameOrBefore(bookingFrom)
+        );
+      });
+  
+      setIsLoading(false);
+      return isAvailable;
+    });
+  
+    setTotalCars(filteredCars);
   }
 
   return (
     <DefaultLayout users={users}>
-
       <Row className="mt-3" justify="center">
-
-        <Col lg={20} sm={24} className=" justify-content-left">
-
+        <Col lg={20} sm={24} className="justify-content-left">
           <RangePicker
-            showTime={{format: 'HH:mm'}}
+            showTime={{ format: 'HH:mm' }}
             format="MMM DD yyyy HH:mm"
             onChange={setFilter}
           />
-
         </Col>
-
       </Row>
 
-      {loading == true && <Spinner />}
+      {loading && <Spinner />}
 
-      <Row justify="center" gutter={16}>
-
-        {totalCars.map (car => {
-          return (
-            <Col
-              key={car._id}
-              //    lg={5} sm={24} xs={24}
-            >
+      {isLoading ? (
+        <div style={{margin:'50px 50px'}}> <h3>Select a car to see availability</h3> </div>
+      ) : ( 
+        <Row justify="center" gutter={16}>
+          {totalCars.map(car => (
+            <Col key={car._id}>
               <div className="car p-2 bs1">
                 <img src={car.image} className="carimg" />
-
                 <div className="car-content d-flex align-items-center justify-content-between">
-
                   <div className="text-left pl-2">
                     <p>{car.name}</p>
                     <p> Rent Per Hour {car.rentPerHour} /-</p>
                   </div>
-
                   <div>
                     <button className="btn1 mr-2">
                       <Link to={`/booking/${car._id}`}>Book Now</Link>
                     </button>
                   </div>
-
                 </div>
               </div>
             </Col>
-          );
-        })}
-
-      </Row>
-
+          ))}
+        </Row>
+      )}
     </DefaultLayout>
   );
 }
