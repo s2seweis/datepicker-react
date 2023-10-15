@@ -2,16 +2,14 @@ import React, {useState, useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import DefaultLayout from '../components/DefaultLayout';
 import {getAllCars} from '../redux/actions/carsActions';
-import {Col, Row, Divider, DatePicker, Checkbox} from 'antd';
+import {Col, Row, DatePicker} from 'antd';
 import {Link} from 'react-router-dom';
 import Spinner from '../components/Spinner';
 import moment from 'moment';
 const {RangePicker} = DatePicker;
 function Home () {
   const {cars} = useSelector (state => state.carsReducer);
-  // console.log("line:105", cars);
   const {users} = useSelector (state => state.usersReducer);
-  // console.log("line:107", users);
   const {loading} = useSelector (state => state.alertsReducer);
   const [totalCars, setTotalcars] = useState ([]);
   const dispatch = useDispatch ();
@@ -23,35 +21,53 @@ function Home () {
   useEffect (
     () => {
       setTotalcars (cars);
-    },
-    [cars],
-  );
+    },[cars]);
 
   function setFilter (values) {
     var selectedFrom = moment (values[0], 'MMM DD yyyy HH:mm');
-    console.log ();
     var selectedTo = moment (values[1], 'MMM DD yyyy HH:mm');
 
     var temp = [];
 
+    // for (var car of cars) {
+    //   if (car.bookedTimeSlots.length == 0) {
+    //     temp.push (car);
+    //   } else {
+    //     for (var booking of car.bookedTimeSlots) {
+    //       if (
+    //         selectedFrom.isBetween (booking.from, booking.to) ||
+    //         selectedTo.isBetween (booking.from, booking.to) ||
+    //         moment (booking.from).isBetween (selectedFrom, selectedTo) ||
+    //         moment (booking.to).isBetween (selectedFrom, selectedTo)
+    //       ) {
+    //       } else {
+    //         temp.push (car);
+    //       }
+    //     }
+    //   }
+    // }
+
     for (var car of cars) {
-      if (car.bookedTimeSlots.length == 0) {
-        temp.push (car);
-      } else {
-        for (var booking of car.bookedTimeSlots) {
-          if (
-            selectedFrom.isBetween (booking.from, booking.to) ||
-            selectedTo.isBetween (booking.from, booking.to) ||
-            moment (booking.from).isBetween (selectedFrom, selectedTo) ||
-            moment (booking.to).isBetween (selectedFrom, selectedTo)
-          ) {
-          } else {
-            temp.push (car);
-          }
+      let isAvailable = car.bookedTimeSlots.length === 0;
+
+      for (var booking of car.bookedTimeSlots) {
+        const bookingFrom = moment (booking.from);
+        const bookingTo = moment (booking.to);
+
+        if (
+          selectedFrom.isBetween (bookingFrom, bookingTo) ||
+          selectedTo.isBetween (bookingFrom, bookingTo) ||
+          bookingFrom.isBetween (selectedFrom, selectedTo) ||
+          bookingTo.isBetween (selectedFrom, selectedTo)
+        ) {
+          isAvailable = false;
+          break; // No need to check further, the car is not available
         }
       }
+      if (isAvailable) {
+        temp.push (car);
+      }
     }
-
     setTotalcars (temp);
   }
 
@@ -79,7 +95,8 @@ function Home () {
         {totalCars.map (car => {
           return (
             <Col
-            //    lg={5} sm={24} xs={24}
+              key={car._id}
+              //    lg={5} sm={24} xs={24}
             >
               <div className="car p-2 bs1">
                 <img src={car.image} className="carimg" />

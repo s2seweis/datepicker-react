@@ -11,11 +11,12 @@ import {bookCar} from '../redux/actions/bookingActions';
 
 import StripeCheckout from 'react-stripe-checkout';
 
+import PropTypes from 'prop-types';
+
 const {RangePicker} = DatePicker;
 
 function BookingCar({match}) {
   const {users} = useSelector(state=>state.usersReducer);
-  console.log('line:107.1', users);
 
   const {cars} = useSelector (state => state.carsReducer);
   const {loading} = useSelector (state => state.alertsReducer);
@@ -24,14 +25,11 @@ function BookingCar({match}) {
   const [from, setFrom] = useState ();
   const [to, setTo] = useState ();
   const [totalHours, setTotalHours] = useState (0);
-  console.log ('line:100', totalHours);
   // ###
-  const hoursCharged = totalHours + 1;
-  console.log ('line:99', hoursCharged);
+  // const hoursCharged = totalHours + 1;
   // ###
   const [driver, setDriver] = useState (false);
   const [totalAmount, setTotalAmount] = useState (0);
-  console.log ('line:120', totalAmount);
 
   const [showModal, setShowModal] = useState (false);
 
@@ -67,7 +65,8 @@ function BookingCar({match}) {
 
     const reqObj = {
       token,
-      user: JSON.parse (localStorage.getItem ('user'))._id,
+      // user: JSON.parse (localStorage.getItem ('user'))._id,
+      user: '65266267ca1b146ac144e2cc',
       car: car._id,
       totalHours,
       totalAmount,
@@ -170,7 +169,7 @@ function BookingCar({match}) {
           <div className="p-2">
             {car.bookedTimeSlots.map (slot => {
               return (
-                <button className="btn1 mt-2">
+                <button key={slot._id} className="btn1 mt-2">
                   {slot.from} - {slot.to}
                 </button>
               );
@@ -193,5 +192,13 @@ function BookingCar({match}) {
     </DefaultLayout>
   );
 }
+
+BookingCar.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      carid: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default BookingCar;

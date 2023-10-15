@@ -14,7 +14,6 @@ function AddCar() {
     values.bookedTimeSlots=[];
 
     dispatch(addCar(values));
-    console.log(values);
   }
 
   return (

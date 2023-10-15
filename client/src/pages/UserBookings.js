@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 import DefaultLayout from '../components/DefaultLayout';
 import {useDispatch, useSelector} from 'react-redux';
 import {getAllBookings} from '../redux/actions/bookingActions';
@@ -9,13 +9,9 @@ import moment from 'moment';
 function UserBookings () {
   const dispatch = useDispatch ();
   const {bookings} = useSelector (state => state.bookingsReducer);
-  console.log('line:300', bookings);
   const {loading} = useSelector (state => state.alertsReducer);
-  const user = JSON.parse (localStorage.getItem ('user'));
-  console.log('line:5000', user?.role);
 
   const {users} = useSelector(state=>state.usersReducer);
-  console.log('line:107.1', users);
 
   useEffect (() => {
     dispatch (getAllBookings ());
@@ -31,14 +27,10 @@ function UserBookings () {
           xl={12} lg={14} md={18} sm={20} xs={18}
         >
 
-          {/* filter and display the bookings of a User */}
-          {/* {bookings.filter (o => o.user == user._id).map (booking => { */}
-          {/* filter and display the bookings of all Users */}
           {bookings.map (booking => {
             return (
-              <Row gutter={16} className="bs1 mt-3 text-left">
-                <Col 
-                // xl={6} lg={6} md={6} sm={6} xs={18}
+              <Row key={booking._id} gutter={16} className="bs1 mt-3 text-left">
+                <Col  
                 >
                   <p><b>{booking.car?.name}</b></p>
                   <p>Total hours : <b>{booking.totalHours}</b></p>

@@ -19,7 +19,6 @@ function Register () {
 
   function onFinish(values) {
     dispatch(userRegister(values));
-    console.log('line:2', values);
 
   }
 
