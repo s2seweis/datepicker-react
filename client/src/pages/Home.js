@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import DefaultLayout from '../components/DefaultLayout';
+import DefaultLayout from '../components/DefaultLayout/DefaultLayout';
 import { getAllCars } from '../redux/actions/carsActions';
 import { Col, Row, DatePicker } from 'antd';
 import { Link } from 'react-router-dom';
@@ -25,49 +25,26 @@ function Home() {
     // setTotalCars(cars);
   }, [cars]);
 
-  // function setFilter(values) {
-  //   const selectedFrom = moment(values[0]);
-  //   const selectedTo = moment(values[1]);
-
-  //   const filteredCars = cars.filter(car => {
-  //     const isAvailable = car.bookedTimeSlots.every(booking => {
-  //       const bookingFrom = moment(booking.from);
-  //       const bookingTo = moment(booking.to);
-
-  //       return (
-  //         selectedFrom.isSameOrAfter(bookingTo) ||
-  //         selectedTo.isSameOrBefore(bookingFrom)
-  //       );
-  //     });
-
-  //     console.log('line:2', isAvailable);
-  //     setIsLoading(false);
-  //     return isAvailable;
-  //   });
-
-  //   setTotalCars(filteredCars);
-  // }
-
   function setFilter(values) {
     const selectedFrom = moment(values[0]);
     const selectedTo = moment(values[1]);
-  
+
     const filteredCars = cars.filter(car => {
       const bookedTimeSlots = car.bookedTimeSlots || []; // Add a null or undefined check here
       const isAvailable = bookedTimeSlots.every(booking => {
         const bookingFrom = moment(booking.from);
         const bookingTo = moment(booking.to);
-  
+
         return (
           selectedFrom.isSameOrAfter(bookingTo) ||
           selectedTo.isSameOrBefore(bookingFrom)
         );
       });
-  
+
       setIsLoading(false);
       return isAvailable;
     });
-  
+
     setTotalCars(filteredCars);
   }
 
@@ -86,8 +63,8 @@ function Home() {
       {loading && <Spinner />}
 
       {isLoading ? (
-        <div style={{margin:'50px 50px'}}> <h3>Select a car to see availability</h3> </div>
-      ) : ( 
+        <div style={{ margin: '50px 50px' }}> <h3>Select a date to see availability of the cars</h3> </div>
+      ) : (
         <Row justify="center" gutter={16}>
           {totalCars.map(car => (
             <Col key={car._id}>
@@ -109,6 +86,7 @@ function Home() {
           ))}
         </Row>
       )}
+      {/* <MyDatePickerComponent /> */}
     </DefaultLayout>
   );
 }

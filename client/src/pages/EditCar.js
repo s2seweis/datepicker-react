@@ -1,7 +1,7 @@
 import { Col, Row, Form, Input } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DefaultLayout from '../components/DefaultLayout';
+import DefaultLayout from '../components/DefaultLayout/DefaultLayout';
 import Spinner from '../components/Spinner';
 import { editCar, getAllCars } from '../redux/actions/carsActions';
 

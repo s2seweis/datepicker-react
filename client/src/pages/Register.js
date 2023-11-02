@@ -2,7 +2,7 @@ import React from 'react';
 import {Row} from 'antd';
 // import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux';
-import DefaultLayout from '../components/DefaultLayout';
+import DefaultLayout from '../components/DefaultLayout/DefaultLayout';
 
 // import {userRegister} from '../redux/actions/userActions';
 

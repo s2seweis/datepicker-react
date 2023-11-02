@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
-import DefaultLayout from '../components/DefaultLayout';
+import DefaultLayout from '../components/DefaultLayout/DefaultLayout';
 import {getAllCars} from '../redux/actions/carsActions';
 import Spinner from '../components/Spinner';
 import {Col, Row, Divider, DatePicker, Checkbox, Modal} from 'antd';

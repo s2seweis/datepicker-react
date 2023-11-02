@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import DefaultLayout from '../components/DefaultLayout';
+import DefaultLayout from '../components/DefaultLayout/DefaultLayout';
 import {useDispatch, useSelector} from 'react-redux';
 import {getAllBookings} from '../redux/actions/bookingActions';
 import {Col, Row} from 'antd';
