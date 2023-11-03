@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import React from 'react';
 import './App.css';
-import {Route, BrowserRouter, Redirect} from 'react-router-dom';
+import {Route, BrowserRouter, Redirect, Switch} from 'react-router-dom';
 import Home from './pages/Home';
 import BookingCar from './pages/BookingCar';
 // import 'antd/dist/antd.css';
@@ -16,7 +16,7 @@ import ErrorPage from './pages/ErrorPage';
 import {useSelector} from 'react-redux';
 import { UsersRoute } from './routers/UsersRoute';
 import {AdminRoute}  from './routers/AdminRoute';
-import Register from './pages/Register';
+import WelcomePage from './pages/WelcomePage/WelcomePage';
 
 function App () {
   const {users} = useSelector (state => state.usersReducer);
@@ -25,29 +25,26 @@ function App () {
     <div className="App">
 
       <BrowserRouter>
-
-        <AdminRoute users={users} path="/landing" exact component={Register} />
-        <AdminRoute users={users} path="/" exact component={Home} />
-        <UsersRoute users={users} path="/" exact component={Home} />
+        <Switch>
+          <Route users={users} path="/" exact component={WelcomePage} />
+          <AdminRoute users={users} path="/datepicker" exact component={Home} />
+          <UsersRoute users={users} path="/datepicker" exact component={Home} />
        
-        <Route users={users} path="/register" exact component={Register} />
-        <AdminRoute users={users} path="/booking/:carid" exact component={BookingCar} />
-        <AdminRoute users={users} path="/userbookings" exact component={UserBookings} />
+          <AdminRoute users={users} path="/booking/:carid" exact component={BookingCar} />
+          <AdminRoute users={users} path="/userbookings" exact component={UserBookings} />
         
-        <UsersRoute users={users} path="/userbookings" exact component={UserBookings} />
-        <AdminRoute users={users} path="/addcar" exact component={AddCar} />
-        <AdminRoute users={users} path="/editcar/:carid" exact component={EditCar} />
+          <UsersRoute users={users} path="/userbookings" exact component={UserBookings} />
+          <AdminRoute users={users} path="/addcar" exact component={AddCar} />
+          <AdminRoute users={users} path="/editcar/:carid" exact component={EditCar} />
 
-        <AdminRoute users={users} path="/auth/admin" exact component={AdminHome} >
-          {/* <Redirect to="/" /> */}
-        </AdminRoute>
+          <AdminRoute users={users} path="/auth/admin" exact component={AdminHome} >
+          </AdminRoute>
         
-        <UsersRoute users={users} path="/user/admin" exact component={ErrorPage} >
-          <Redirect to="/" />
-        </UsersRoute>
-
+          <UsersRoute users={users} path="/user/admin" exact component={ErrorPage} >
+            <Redirect to="/" />
+          </UsersRoute>
+        </Switch>
       </BrowserRouter>
-
     </div>
   );
 }

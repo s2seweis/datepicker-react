@@ -10,7 +10,7 @@ export const AdminRoute = props => {
   ) {
     return <Route {...props} />;
   } else {
-    return <Redirect to="/landing" />;
+    return <Redirect to="/" />;
   }
 };
 

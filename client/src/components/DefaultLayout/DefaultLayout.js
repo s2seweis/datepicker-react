@@ -1,30 +1,30 @@
 import React from 'react';
-import {Menu, Dropdown, Button, Row, Col} from 'antd';
-import {Link} from 'react-router-dom';
+import { Menu, Dropdown, Button, Row, Col } from 'antd';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function DefaultLayout (props) {
+function DefaultLayout(props) {
   const menuAdmin = (
     <Menu>
       <Menu.Item>
-        <a href="/">
+        <Link to="/datepicker">
           DatePicker
-        </a>
+        </Link>
       </Menu.Item>
       <Menu.Item>
-        <a href="/userbookings">
+        <Link to="/userbookings">
           Bookings
-        </a>
+        </Link>
       </Menu.Item>
       <Menu.Item>
-        <a href="/auth/admin">
+        <Link to="/auth/admin">
           Admin
-        </a>
+        </Link>
       </Menu.Item>
       <Menu.Item>
-        <a href="/landing">
+        <Link to="/">
           Intro
-        </a>
+        </Link>
       </Menu.Item>
 
     </Menu>
@@ -35,15 +35,15 @@ function DefaultLayout (props) {
       <div className="header bs1">
         <Row gutter={16} justify="center">
           <Col lg={20} sm={24} xs={24}>
-            <div className="d-flex justify-content-between">
-              <h1 style={{marginLeft: '15px'}}>
-                <div style={{color: 'white'}}>
-                  <Link to="/">DatePicker</Link>
+            <div style={{alignItems:'center'}} className="d-flex justify-content-between">
+              <h1 style={{ marginLeft: '15px' }}>
+                <div style={{ color: 'white' }}>
+                  <Link to="/datepicker">DatePicker</Link>
                 </div>
               </h1>
 
               <Dropdown overlay={menuAdmin} placement="bottomCenter">
-                <Button>{'Admin'}</Button>
+                <Button style={{ marginRight: '25px' }}>{'Admin'}</Button>
               </Dropdown>
 
             </div>
