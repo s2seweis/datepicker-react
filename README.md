@@ -37,6 +37,15 @@ npm install for /cient/server and /
 npm run dev
 ```
 
+## Eslint and Prettier for node.js & react 
+- npm install eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y eslint-plugin-import --save-dev
+- npx eslint --init
+- define .eslintrc according to your needs
+
+## Git Commands:
+- overwrite local files: git reset --hard HEAD / git pull
+- practise the git commands 
+
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions to improve the component, please create an issue or submit a pull request following our [contribution guidelines](CONTRIBUTING.md).
