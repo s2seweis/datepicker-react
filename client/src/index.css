@@ -43,7 +43,6 @@ p{
   border: 1px solid black !important;
   padding: 5px 15px !important;
   outline: none !important;
-  margin-bottom: 100px;
 }
 .bt1:focus{
   border: none;

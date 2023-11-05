@@ -2,6 +2,7 @@ import React from 'react';
 import { Menu, Dropdown, Button, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './DefaultLayout.css';
 
 function DefaultLayout(props) {
   const menuAdmin = (
@@ -36,8 +37,8 @@ function DefaultLayout(props) {
           <Col lg={20} sm={24} xs={24}>
             <div style={{alignItems:'center'}} className="d-flex justify-content-between">
               <h1 style={{ marginLeft: '15px' }}>
-                <div style={{ color: 'white' }}>
-                  <Link to="/datepicker">DatePicker</Link>
+                <div >
+                  <Link className="a-link-datepicker" to="/datepicker">Date Picker</Link>
                 </div>
               </h1>
 

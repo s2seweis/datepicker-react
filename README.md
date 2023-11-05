@@ -2,6 +2,12 @@
 
 Welcome to the React Datepicker component! This reusable and customizable datepicker component for React applications simplifies date selection for users, enhancing the overall user experience. Whether you are building a booking system, a scheduling application, or any project that involves date-related input, this component will streamline the process.
 
+<div align="center">
+<img src="images/intro.png" alt="Example Image">
+<img src="images/datepicker-1.png" alt="Example Image">
+<img src="images/datepicker-2.png" alt="Example Image">
+</div>
+
 ## Table of Contents
 - [Coming Soon](#coming-soon)
 - [Features](#features)
