@@ -9,14 +9,6 @@ Welcome to the React Datepicker component! This reusable and customizable datepi
 - add filter menu (for select a specific category)
 
 ## Table of Contents
-- App Router
-- Redux for State Management
-- Mongo DB Connection
-- Features
-- Installation
-- Getting Started
-- Contributing
-
 - [Features](##features)
 - [Installation](##installation)
 - [Getting Started](##getting-Started)
