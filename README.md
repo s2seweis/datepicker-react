@@ -2,29 +2,31 @@
 
 Welcome to the React Datepicker component! This reusable and customizable datepicker component for React applications simplifies date selection for users, enhancing the overall user experience. Whether you are building a booking system, a scheduling application, or any project that involves date-related input, this component will streamline the process.
 
-## Coming Soon:
+## Table of Contents
+- [Coming Soon](#coming-soon)
+- [Features](#features)
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+- [Eslint](#eslint)
+- [Git Commands](#git-commands)
+- [Contributing](#contributing)
+- [License](#license)
+
+# Coming Soon:
 - change the json data to rooms
 - add view order page (useParams Hook), and restyle the My Bookings page (id, car name, Date of booking, Total), reduce it!
 - add a list of the booked cars, give a calender preview (Monday to Sunday), you should see when one car is book and when not!
 - add filter menu (for select a specific category)
 
-## Table of Contents
-- [Features](##features)
-- [Installation](##installation)
-- [Getting Started](##getting-Started)
-- [Eslint](##eslint)
-- [Git Commands](##git-commands)
-- [Contributing](##contributing)
-- [License](##license)
 
-## Features
+# Features
 
 - **User-Friendly Interface**: Intuitive design for seamless date selection.
 - **Date Range Selection**: Easily choose date ranges for more complex applications.
 - **Customizable Styling**: Modify the appearance to match your application's theme and design.
 - **Responsive Design**: Ensures a consistent experience across different devices.
 
-## Installation
+# Installation
 
 To use the Datepicker component in your React project, simply install it via npm or yarn:
 
@@ -34,7 +36,7 @@ npm install react-datepicker
 yarn add react-datepicker
 ```
 
-## Getting Started
+# Getting Started
 
 ```
 git clone https://github.com/your-username/react-project.git
@@ -43,20 +45,20 @@ npm install /cient or /server also install /
 npm run dev
 ```
 
-## Eslint 
+# Eslint 
 - npm install eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y eslint-plugin-import --save-dev
 - npx eslint --init
 - define .eslintrc according to your needs
 
-## Git Commands:
+# Git Commands:
 - overwrite local files: git reset --hard HEAD / git pull
 - practise the git commands 
 
-## Contributing
+# Contributing
 
 Contributions are welcome! If you find any issues or have suggestions to improve the component, please create an issue or submit a pull request following our [contribution guidelines](CONTRIBUTING.md).
 
-## License
+# License
 
 This Datepicker component is open-source and available under the [MIT License](LICENSE). Feel free to use, modify, and distribute it as needed in your projects.
 
