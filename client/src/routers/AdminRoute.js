@@ -1,10 +1,10 @@
 import React from 'react';
-import {Redirect, Route} from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export const AdminRoute = props => {
   if (
-    (localStorage.getItem ('user') && props.users.role === 'admin') ||
+    (localStorage.getItem('user') && props.users.role === 'admin') ||
     props.users.role === 'user' ||
     props.users.role === undefined
   ) {
@@ -15,9 +15,10 @@ export const AdminRoute = props => {
 };
 
 AdminRoute.propTypes = {
-  users: PropTypes.shape ({
-    role: PropTypes.oneOf (['admin', 'user']),
-  }),
+  users: PropTypes.oneOfType([
+    PropTypes.objectOf(PropTypes.oneOf(['admin', 'user'])),
+    PropTypes.arrayOf(PropTypes.objectOf(PropTypes.oneOf(['admin', 'user']))),
+  ]),
   // Other props validation if needed
 };
 

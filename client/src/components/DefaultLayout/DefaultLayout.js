@@ -6,27 +6,26 @@ import PropTypes from 'prop-types';
 function DefaultLayout(props) {
   const menuAdmin = (
     <Menu>
-      <Menu.Item>
+      <Menu.Item key="/datepicker">
         <Link to="/datepicker">
           DatePicker
         </Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="/userbookings">
         <Link to="/userbookings">
           Bookings
         </Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="/auth/admin">
         <Link to="/auth/admin">
           Admin
         </Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="/">
         <Link to="/">
           Intro
         </Link>
       </Menu.Item>
-
     </Menu>
   );
 
@@ -42,7 +41,7 @@ function DefaultLayout(props) {
                 </div>
               </h1>
 
-              <Dropdown overlay={menuAdmin} placement="bottomCenter">
+              <Dropdown overlay={menuAdmin} placement="bottom">
                 <Button style={{ marginRight: '25px' }}>{'Admin'}</Button>
               </Dropdown>
 

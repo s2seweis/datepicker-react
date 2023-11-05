@@ -2,6 +2,12 @@
 
 Welcome to the React Datepicker component! This reusable and customizable datepicker component for React applications simplifies date selection for users, enhancing the overall user experience. Whether you are building a booking system, a scheduling application, or any project that involves date-related input, this component will streamline the process.
 
+## Coming Soon:
+- change the json data to rooms
+- add view order page (useParams Hook), and restyle the My Bookings page (id, car name, Date of booking, Total), reduce it!
+- add a list of the booked cars, give a calender preview (Monday to Sunday), you should see when one car is book and when not!
+- add filter menu (for select a specific category)
+
 ## Table of Contents
 - App Router
 - Redux for State Management
