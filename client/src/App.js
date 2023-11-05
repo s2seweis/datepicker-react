@@ -28,7 +28,7 @@ function App () {
         <Switch>
           <Route users={users} path="/" exact component={WelcomePage} />
           <AdminRoute users={users} path="/datepicker" exact component={Home} />
-          <UsersRoute users={users} path="/datepicker" exact component={Home} />
+          {/* <UsersRoute users={users} path="/datepicker" exact component={Home} /> */}
        
           <AdminRoute users={users} path="/booking/:carid" exact component={BookingCar} />
           <AdminRoute users={users} path="/userbookings" exact component={UserBookings} />

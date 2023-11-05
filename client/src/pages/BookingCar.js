@@ -22,8 +22,10 @@ function BookingCar({match}) {
   const {loading} = useSelector (state => state.alertsReducer);
   const [car, setcar] = useState ({});
   const dispatch = useDispatch ();
+  // ### need to lift this state to the parent component and pass it down as props, for users it should not be possible to change the date again otherwise it will create +1 timeslots, or it needs to check again for availability
   const [from, setFrom] = useState ();
   const [to, setTo] = useState ();
+  // ###
   const [totalHours, setTotalHours] = useState (0);
   // ###
   // const hoursCharged = totalHours + 1;
