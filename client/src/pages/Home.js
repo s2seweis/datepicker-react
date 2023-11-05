@@ -17,6 +17,9 @@ function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch();
 
+  // const [from, setFrom] = useState ();
+  // const [to, setTo] = useState ();
+
   useEffect(() => {
     dispatch(getAllCars());
   }, []);

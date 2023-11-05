@@ -17,6 +17,14 @@ Welcome to the React Datepicker component! This reusable and customizable datepi
 - Getting Started
 - Contributing
 
+- [Features](##features)
+- [Installation](##installation)
+- [Getting Started](##getting-Started)
+- [Eslint](##eslint)
+- [Git Commands](##git-commands)
+- [Contributing](##contributing)
+- [License](##license)
+
 ## Features
 
 - **User-Friendly Interface**: Intuitive design for seamless date selection.
@@ -39,11 +47,11 @@ yarn add react-datepicker
 ```
 git clone https://github.com/your-username/react-project.git
 cd react-project
-npm install for /cient/server and /
+npm install /cient or /server also install /
 npm run dev
 ```
 
-## Eslint and Prettier for node.js & react 
+## Eslint 
 - npm install eslint eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-jsx-a11y eslint-plugin-import --save-dev
 - npx eslint --init
 - define .eslintrc according to your needs
