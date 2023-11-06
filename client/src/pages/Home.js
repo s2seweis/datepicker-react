@@ -29,26 +29,32 @@ function Home() {
   }, [cars]);
 
   function setFilter(values) {
-    const selectedFrom = moment(values[0]);
-    const selectedTo = moment(values[1]);
+    if (values && values.length === 2) {
+      const selectedFrom = moment(values[0]);
+      const selectedTo = moment(values[1]);
 
-    const filteredCars = cars.filter(car => {
-      const bookedTimeSlots = car.bookedTimeSlots || []; // Add a null or undefined check here
-      const isAvailable = bookedTimeSlots.every(booking => {
-        const bookingFrom = moment(booking.from);
-        const bookingTo = moment(booking.to);
+      const filteredCars = cars.filter(car => {
+        const bookedTimeSlots = car.bookedTimeSlots || [];
+        const isAvailable = bookedTimeSlots.every(booking => {
+          const bookingFrom = moment(booking.from);
+          const bookingTo = moment(booking.to);
 
-        return (
-          selectedFrom.isSameOrAfter(bookingTo) ||
-          selectedTo.isSameOrBefore(bookingFrom)
-        );
+          return (
+            selectedFrom.isSameOrAfter(bookingTo) ||
+            selectedTo.isSameOrBefore(bookingFrom)
+          );
+        });
+
+        setIsLoading(false);
+        return isAvailable;
       });
 
+      setTotalCars(filteredCars);
+    } else {
+      // Handle the case when values is null or not an array with 2 elements
       setIsLoading(false);
-      return isAvailable;
-    });
-
-    setTotalCars(filteredCars);
+      setTotalCars(cars); // Reset to the initial state or handle it as per your requirement
+    }
   }
 
   return (
